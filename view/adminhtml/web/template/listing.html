@@ -1,0 +1,18 @@
+<div class='admin__data-grid-wrap' data-role='grid-wrapper'>
+	<table class='data-grid' data-role='grid'>
+		<thead><tr each="data: getVisible(), as: '$col'" render='getHeader()'/></thead>
+		<tbody>
+			<tr class='data-row' repeat="foreach: rows, item: '$row'">
+				<td
+					click='getFieldHandler($row())'
+					css='$parent.getRowClass($row())'
+					outerfasteach="data: getVisible(), as: '$col'"
+					template='getBody()'
+				/>
+			</tr>
+			<tr class='data-grid-tr-no-data' ifnot='hasData()'>
+				<td attr='colspan: countVisible()' translate="'We couldn\'t find any records.'"/>
+			</tr>
+		</tbody>
+	</table>
+</div>
