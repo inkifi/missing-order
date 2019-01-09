@@ -1,0 +1,13 @@
+<?xml version='1.0'?>
+<config
+	xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+	xsi:noNamespaceSchemaLocation='urn:magento:framework:Event/etc/events.xsd'
+>
+<!-- 2019-01-09 -->
+	<event name='df_data_provider__search_result'>
+		<observer
+			instance='Inkifi\MissingOrder\Observer\DataProvider\SearchResult'
+			name='Inkifi\MissingOrder\Observer\DataProvider\SearchResult'
+		/>
+	</event>
+</config>
