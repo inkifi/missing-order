@@ -39,7 +39,10 @@ final class SearchResult implements ObserverInterface {
 			$select->where('magento_order_id IN (?)', $oids);
 			$map = df_conn()->fetchPairs($select); /** @var array(Magento order ID => Mediaclip order ID) $map */
 			df_map($r, function(Document $i) use($map) {
-				if ('canceled' !== $i['status'] && !isset($map[intval($i['entity_id'])])) {
+				if (
+					!in_array($i['status'], ['canceled', 'pending_payment'])
+					&& !isset($map[intval($i['entity_id'])])
+				) {
 					$i['df_class'] = 'df-missed';
 				}
 			});
