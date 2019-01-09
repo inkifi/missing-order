@@ -2,10 +2,9 @@
 	<table class='data-grid' data-role='grid'>
 		<thead><tr each="data: getVisible(), as: '$col'" render='getHeader()'/></thead>
 		<tbody>
-			<tr class='data-row' repeat="foreach: rows, item: '$row'">
+			<tr class='data-row' css='getRowClass($row())' repeat="foreach: rows, item: '$row'">
 				<td
 					click='getFieldHandler($row())'
-					css='$parent.getRowClass($row())'
 					outerfasteach="data: getVisible(), as: '$col'"
 					template='getBody()'
 				/>
