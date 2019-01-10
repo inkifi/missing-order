@@ -1,4 +1,6 @@
-A special handling of the Mediaclip missing orders for [inkifi.com](https://inkifi.com).
+A special handling of the Mediaclip missing orders for [inkifi.com](https://inkifi.com).  
+- [upwork.com/ab/f/contracts/21351745](https://www.upwork.com/ab/f/contracts/21351745)
+- [upwork.com/messages/rooms/room_f518ada88c89e3d7de30e4fd8922bbdf/story_579929cf1ed21577d3dbe99db0a476e0](https://www.upwork.com/messages/rooms/room_f518ada88c89e3d7de30e4fd8922bbdf/story_579929cf1ed21577d3dbe99db0a476e0)
 
 ## How to install
 ```
