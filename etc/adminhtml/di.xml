@@ -1,0 +1,15 @@
+<?xml version='1.0'?>
+<config
+	xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+	xsi:noNamespaceSchemaLocation='urn:magento:framework:ObjectManager/etc/config.xsd'
+>
+<!-- 2019-01-29
+The plugin's purpose is to add the «Send to Mediaclip» buttom to the backend order view.
+https://magento.stackexchange.com/a/91134 -->
+	<type name='Magento\Backend\Block\Widget\Button\Toolbar'>
+		<plugin
+			name='Inkifi\MissingOrder\Plugin\Backend\Block\Widget\Button\Toolbar'
+			type='Inkifi\MissingOrder\Plugin\Backend\Block\Widget\Button\Toolbar'
+		/>
+	</type>
+</config>
