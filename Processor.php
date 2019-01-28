@@ -1,6 +1,7 @@
 <?php
 namespace Inkifi\MissingOrder;
 use Magento\Sales\Model\Order as O;
+use Mangoit\MediaclipHub\Observer\CheckoutSuccess as CS;
 // 2019-01-29
 final class Processor {
 	/**
@@ -11,6 +12,11 @@ final class Processor {
 		!in_array($this->_o->getStatus(), ['canceled', 'pending_payment'])
 		&& !df_fetch_one('mediaclip_orders', 'id', ['magento_order_id' => $this->_o->getId()])
 	;}
+
+	/**
+	 * 2019-01-29
+	 */
+	function post() {CS::post($this->_o);}
 
 	/**
 	 * 2019-01-29
