@@ -12,6 +12,7 @@ use Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult as UiSe
 use Magento\Sales\Model\ResourceModel\Order\Creditmemo\Grid\Collection as CreditmemoGC;
 use Magento\Sales\Model\ResourceModel\Order\Grid\Collection as OrderGC;
 use Magento\Sales\Model\ResourceModel\Order\Invoice\Grid\Collection as InvoiceGC;
+use Mangoit\MediaclipHub\Model\Orders as mOrder;
 // 2019-01-09
 final class SearchResult implements ObserverInterface {
 	/**
@@ -35,8 +36,9 @@ final class SearchResult implements ObserverInterface {
 			 * Структура документа описана здесь: https://mage2.pro/t/1908
 			 */
 			$oids = df_int(df_map($r, function(Document $i) {return $i['entity_id'];})); /** @var int[] $oids */
-			$select = df_db_from('mediaclip_orders', ['magento_order_id', 'id']); /** @var Select $select */
-			$select->where('magento_order_id IN (?)', $oids);
+			$f_MAGENTO_ORDER_ID = mOrder::F__MAGENTO_ORDER_ID; /** @var string $f_MAGENTO_ORDER_ID */
+			$select = df_db_from('mediaclip_orders', [$f_MAGENTO_ORDER_ID, 'id']); /** @var Select $select */
+			$select->where("$f_MAGENTO_ORDER_ID IN (?)", $oids);
 			$map = df_conn()->fetchPairs($select); /** @var array(Magento order ID => Mediaclip order ID) $map */
 			df_map($r, function(Document $i) use($map) {
 				if (

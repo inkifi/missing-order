@@ -2,6 +2,7 @@
 namespace Inkifi\MissingOrder;
 use Magento\Sales\Model\Order as O;
 use Mangoit\MediaclipHub\Observer\CheckoutSuccess as CS;
+use Mangoit\MediaclipHub\Model\Orders as mOrder;
 // 2019-01-29
 final class Processor {
 	/**
@@ -10,7 +11,7 @@ final class Processor {
 	 */
 	function eligible() {return
 		!in_array($this->_o->getStatus(), ['canceled', 'pending_payment'])
-		&& !df_fetch_one('mediaclip_orders', 'id', ['magento_order_id' => $this->_o->getId()])
+		&& !df_fetch_one('mediaclip_orders', 'id', [mOrder::F__MAGENTO_ORDER_ID => $this->_o->getId()])
 	;}
 
 	/**
