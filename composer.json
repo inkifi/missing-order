@@ -1,6 +1,6 @@
 {
 	"name": "inkifi/missing-order"
-	,"version": "1.0.3"
+	,"version": "1.0.4"
 	,"description": "A special handling of the Mediaclip missing orders for inkifi.com"
 	,"type": "magento2-module"
 	,"homepage": "https://github.com/inkifi/missing-order"

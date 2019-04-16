@@ -11,11 +11,12 @@ final class Processor {
 	 */
 	function eligible() {return
 		!in_array($this->_o->getStatus(), ['canceled', 'pending_payment'])
-		&& !df_fetch_one('mediaclip_orders', 'id', [mOrder::F__MAGENTO_ORDER_ID => $this->_o->getId()])
+		&& !df_fetch_one('mediaclip_orders', 'id', [mOrder::F__MAGENTO_ORDER_ID => ikf_ite($this->_o->getId())])
 	;}
 
 	/**
 	 * 2019-01-29
+	 * @used-by \Inkifi\MissingOrder\Controller\Adminhtml\Index\Index::execute()
 	 */
 	function post() {CS::post($this->_o);}
 

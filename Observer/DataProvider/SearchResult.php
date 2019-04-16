@@ -35,7 +35,8 @@ final class SearchResult implements ObserverInterface {
 			 * @see \Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult::$document
 			 * Структура документа описана здесь: https://mage2.pro/t/1908
 			 */
-			$oids = df_int(df_map($r, function(Document $i) {return $i['entity_id'];})); /** @var int[] $oids */
+			/** @var string[] $oids */  // 2019-04-16 «63922» or «staging-63922»
+			$oids = df_map($r, function(Document $i) {return ikf_ite($i['entity_id']);});
 			$f_MAGENTO_ORDER_ID = mOrder::F__MAGENTO_ORDER_ID; /** @var string $f_MAGENTO_ORDER_ID */
 			$select = df_db_from('mediaclip_orders', [$f_MAGENTO_ORDER_ID, 'id']); /** @var Select $select */
 			$select->where("$f_MAGENTO_ORDER_ID IN (?)", $oids);
@@ -43,7 +44,7 @@ final class SearchResult implements ObserverInterface {
 			df_map($r, function(Document $i) use($map) {
 				if (
 					!in_array($i['status'], ['canceled', 'pending_payment'])
-					&& !isset($map[intval($i['entity_id'])])
+					&& !isset($map[ikf_ite($i['entity_id'])])
 				) {
 					$i['df_class'] = 'df-missed';
 				}
