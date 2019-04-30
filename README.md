@@ -15,6 +15,7 @@ bin/magento maintenance:disable
 ## How to upgrade
 ```
 bin/magento maintenance:enable
+rm -rf composer.lock
 composer update inkifi/missing-order
 bin/magento setup:upgrade
 rm -rf var/di var/generation generated/code && bin/magento setup:di:compile
