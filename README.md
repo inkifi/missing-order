@@ -5,6 +5,7 @@ A special handling of the Mediaclip missing orders for [inkifi.com](https://inki
 ## How to install
 ```
 bin/magento maintenance:enable
+rm -rf composer.lock
 composer clear-cache
 composer require inkifi/missing-order:*
 bin/magento setup:upgrade
